@@ -11,7 +11,6 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 
 const NavBar = () => {
   const theme = React.useContext(DarkModeContext);
-  console.log(theme)
   const darkMode = theme.state.darkMode;
 
   const handleThemeChange = () => {
