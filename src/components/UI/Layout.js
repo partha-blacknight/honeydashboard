@@ -1,0 +1,80 @@
+import React, { useContext, useEffect } from "react";
+import PropTypes from "prop-types";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
+import NavBar from './NavBar';
+import { darkTheme, lightTheme } from "./Theme";
+import { DarkModeContext } from "./ThemeHandler";
+
+const Layout = ({ children, ft }) => {
+  const theme = useContext(DarkModeContext);
+  const darkMode = theme.state.darkMode;
+
+  useEffect(() => {
+    if (darkMode) {
+      theme.dispatch({ type: "LIGHTMODE" });
+    } else {
+      theme.dispatch({ type: "DARKMODE" });
+    }
+  }, [])
+
+  return (
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <CssBaseline />
+      <NavBar/>
+      <div
+       style={{
+         margin: `0 auto`,
+         padding: `1rem 1.0875rem 1.45rem`
+       }}
+     >
+       <main>{children}</main>
+     </div>
+     {(ft === "t" ? true : null) && (
+       <footer
+         style={{
+           position: "fixed",
+           bottom: 0,
+           width: "100vw",
+           maxWidth: "100%",
+           padding: 0,
+           margin: 0,
+           backgroundColor: "#120d0d"
+         }}
+       >
+         <div
+           style={{
+             textAlign: "center",
+             marginTop: "0.5em",
+             color: "white",
+             textDecoration: "none",
+             marginBottom: "0.5em"
+           }}
+         >
+           <a
+             href="https://snappywebdesign.net/"
+             style={{
+               textDecoration: "none",
+               color: "#FFF",
+               paddingBottom: 3,
+               borderBottom: `1px solid white`
+             }}
+           >
+             Treacle Technologies
+           </a>
+         </div>
+       </footer>
+     )}
+    </ThemeProvider>
+  )
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired
+}
+
+Layout.defaultProps = {
+  ft: "t"
+}
+
+export default Layout;
