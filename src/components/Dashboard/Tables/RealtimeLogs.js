@@ -36,19 +36,19 @@ function createData(timestamps, ip, protocol, country, logs) {
 }
 
 const rows = [
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
-  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53 GMT+0530", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -85,7 +85,7 @@ const headCells = [
   {
     id: 'timestamps',
     numeric: false,
-    disablePadding: false,
+    disablePadding: true,
     label: 'Timestamps',
   },
   {
@@ -114,7 +114,7 @@ const headCells = [
   },
 ];
 
-function AttackCountryTableHead(props) {
+function RealtimeLogsHead(props) {
   const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
     props;
   const createSortHandler = (property) => (event) => {
@@ -161,7 +161,7 @@ function AttackCountryTableHead(props) {
   );
 }
 
-AttackCountryTableHead.propTypes = {
+RealtimeLogsHead.propTypes = {
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   onSelectAllClick: PropTypes.func.isRequired,
@@ -170,7 +170,7 @@ AttackCountryTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-const AttackCountryTableToolbar = (props) => {
+const RealtimeLogsToolbar = (props) => {
   const { numSelected } = props;
 
   return (
@@ -200,7 +200,7 @@ const AttackCountryTableToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Most Attacks By Country
+          Realtime Logs
         </Typography>
       )}
 
@@ -221,7 +221,7 @@ const AttackCountryTableToolbar = (props) => {
   );
 };
 
-AttackCountryTableToolbar.propTypes = {
+RealtimeLogsToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
@@ -290,16 +290,15 @@ export default function AttackCountryTable() {
   return (
     <ThemeProvider theme={darkTheme}>
       <Box sx={{ width: '100%' }}>
-        <Paper sx={{ width: '100%', overflow: 'hidden', mb: 2, backgroundColor: '#020000' }} elevation={8}>
-          <AttackCountryTableToolbar numSelected={selected.length} />
-          <TableContainer sx={{ maxHeight: 480 }}>
+        <Paper sx={{ width: '100%', mb: 2, backgroundColor: '#020000' }} elevation={8}>
+          <RealtimeLogsToolbar numSelected={selected.length} />
+          <TableContainer>
             <Table
               sx={{ minWidth: 750 }}
-              stickyHeader
               aria-labelledby="tableTitle"
               size={dense ? 'small' : 'medium'}
             >
-              <AttackCountryTableHead
+              <RealtimeLogsHead
                 numSelected={selected.length}
                 order={order}
                 orderBy={orderBy}
@@ -356,7 +355,7 @@ export default function AttackCountryTable() {
                       height: (dense ? 33 : 53) * emptyRows,
                     }}
                   >
-                    <TableCell colSpan={6} />
+                    <TableCell colSpan={2} />
                   </TableRow>
                 )}
               </TableBody>

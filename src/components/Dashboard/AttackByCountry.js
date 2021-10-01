@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-import DoughnutChart from './Chart/DoughnutChart';
+import MostAttackByCountryChart from './Chart/MostAttackByCountryChart';
 import AttackCountryTable from './Tables/AttackCountryTable';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -11,8 +11,8 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  height: '480px',
-  backgroundColor: '#020000'
+  height: '550px',
+  backgroundColor: '#0303033b'
 }));
 
 const darkTheme = createTheme({ palette: { mode: 'dark' } });
@@ -22,22 +22,18 @@ const AttackByCountry = () => {
     <Box sx={{ flexGrow: 1, marginTop: 8 }}>
       <Grid container spacing={2}>
         <Grid item md={4} xs={12}>
-          <ThemeProvider theme={darkTheme}>
             <Box>
               <Item elevation={8}>
-                <DoughnutChart/>
+                <MostAttackByCountryChart/>
               </Item>
             </Box>
-          </ThemeProvider>
         </Grid>
         <Grid item md={8} xs={12}>
-          <ThemeProvider theme={darkTheme}>
             <Box>
               <Item elevation={8}>
                 <AttackCountryTable/>
               </Item>
             </Box>
-          </ThemeProvider>
         </Grid>
       </Grid>
     </Box>

@@ -11,7 +11,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  height: '440px',
+  height: '480px',
   backgroundColor: '#020000'
 }));
 
@@ -19,7 +19,7 @@ const darkTheme = createTheme({ palette: { mode: 'dark' } });
 
 const TopSectionGrid = () => {
   return (
-    <Box sx={{ flexGrow: 1, padding: 8 }}>
+    <Box sx={{ flexGrow: 1, marginTop: 8 }}>
       <Grid container spacing={2}>
         <Grid item md={4} xs={12}>
           <ThemeProvider theme={darkTheme}>

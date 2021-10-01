@@ -12,7 +12,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-const defaultTheme = createTheme();
+//const defaultTheme = createTheme();
+const darkTheme = createTheme({ palette: { mode: 'dark' } });
 const useStylesAntDesign = makeStyles(
   (theme) => ({
     root: {
@@ -20,7 +21,7 @@ const useStylesAntDesign = makeStyles(
       color:
         theme.palette.mode === 'light'
           ? 'rgba(0,0,0,.85)'
-          : 'rgba(255,255,255,0.85)',
+          : 'rgba(255,255,255,.85)',
       fontFamily: [
         '-apple-system',
         'BlinkMacSystemFont',
@@ -137,7 +138,7 @@ const useStylesAntDesign = makeStyles(
       },
     },
   }),
-  { defaultTheme },
+  { darkTheme },
 );
 
 const useStyles = makeStyles(
@@ -157,7 +158,7 @@ const useStyles = makeStyles(
       },
     },
   }),
-  { defaultTheme },
+  { darkTheme },
 );
 
 function SettingsPanel(props) {

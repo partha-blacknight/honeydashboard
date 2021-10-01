@@ -3,23 +3,10 @@ import PropTypes from "prop-types";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import NavBar from './NavBar';
-import { darkTheme, lightTheme } from "./Theme";
-import { DarkModeContext } from "./ThemeHandler";
 
 const Layout = ({ children, ft }) => {
-  const theme = useContext(DarkModeContext);
-  const darkMode = theme.state.darkMode;
-
-  useEffect(() => {
-    if (darkMode) {
-      theme.dispatch({ type: "LIGHTMODE" });
-    } else {
-      theme.dispatch({ type: "DARKMODE" });
-    }
-  }, [])
-
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    <React.Fragment>
       <CssBaseline />
       <NavBar/>
       <div
@@ -65,7 +52,7 @@ const Layout = ({ children, ft }) => {
          </div>
        </footer>
      )}
-    </ThemeProvider>
+    </React.Fragment>
   )
 }
 
