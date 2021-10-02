@@ -69,8 +69,8 @@ const options = {
   },
 };
 
-const LiveAttackChart = () => (
+const AttackSummaryChart = () => (
   <Bar data={data} options={options} />
 );
 
-export default LiveAttackChart;
+export default AttackSummaryChart;

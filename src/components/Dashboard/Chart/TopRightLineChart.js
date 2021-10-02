@@ -6,7 +6,14 @@ const data = {
   datasets: [
     {
       label: '# HTTP',
-      data: [12, 19, 3, 5, 2, 3],
+      data: [
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1
+      ],
       fill: false,
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgba(255, 99, 132, 0.2)',
@@ -14,7 +21,14 @@ const data = {
     },
     {
       label: '# FTP',
-      data: [15, 28, 34, 56, 22, 24],
+      data: [
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1
+      ],
       fill: false,
       backgroundColor: 'rgb(154, 162, 235)',
       borderColor: 'rgba(154, 162, 235, 0.2)',
@@ -22,7 +36,14 @@ const data = {
     },
     {
       label: '# SSH',
-      data: [23, 20, 31, 41, 53, 72],
+      data: [
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1
+      ],
       fill: false,
       backgroundColor: 'rgb(134, 224, 235)',
       borderColor: 'rgba(134, 224, 235, 0.2)',
@@ -30,7 +51,14 @@ const data = {
     },
     {
       label: '# MODBUS',
-      data: [98, 22, 67, 38, 46, 51],
+      data: [
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1
+      ],
       fill: false,
       backgroundColor: 'rgb(254, 102, 219)',
       borderColor: 'rgba(254, 102, 219, 0.2)',
@@ -38,7 +66,14 @@ const data = {
     },
     {
       label: '# SNMP',
-      data: [17, 27, 12, 19, 21, 26],
+      data: [
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1
+      ],
       fill: false,
       backgroundColor: 'rgb(126, 178, 201)',
       borderColor: 'rgba(126, 178, 201, 0.2)',
@@ -46,7 +81,14 @@ const data = {
     },
     {
       label: '# TELNET',
-      data: [61, 82, 14, 18, 23, 32],
+      data: [
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1
+      ],
       fill: false,
       backgroundColor: 'rgb(194, 240, 235)',
       borderColor: 'rgba(194, 240, 235, 0.2)',

@@ -6,7 +6,14 @@ const data = {
   datasets: [
     {
       label: '# Protocol',
-      data: [12, 19, 3, 5, 2, 3],
+      data: [
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1
+      ],
       backgroundColor: [
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',

@@ -7,7 +7,21 @@ const data = {
   datasets: [
     {
       label: '# Live Attack By Country',
-      data: [2400, 1900, 3000, 5000, 2050, 3500, 4500, 7000, 8500, 9000, 10500, 1500, 7900],
+      data: [
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1,
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1, 
+        Math.floor(Math.random() * 10000) + 1,
+      ],
       backgroundColor: [
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',

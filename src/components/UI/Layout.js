@@ -47,7 +47,7 @@ const Layout = ({ children, ft }) => {
                borderBottom: `1px solid white`
              }}
            >
-             Treacle Technologies
+            Copyright @ {new Date().getFullYear()} Treacle Technologies 
            </a>
          </div>
        </footer>

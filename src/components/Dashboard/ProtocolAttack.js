@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles'; 
-import VerticalBar from './Chart/VerticalBar';
-import DataGrid from './Tables/DataGrid';
+import AttackSummaryChart from './Chart/AttackSummaryChart';
+import AttackSummaryTable from './Tables/AttackSummaryTable';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -25,14 +25,14 @@ export default function ProtocolAttacks() {
         <Grid item md={12} xs={12}>
             <Box>
               <Item elevation={8}>
-                <VerticalBar/>
+                <AttackSummaryChart/>
               </Item>
             </Box>
         </Grid>
         <Grid item md={12} xs={12}>
             <Box sx={{marginTop: 8}}>
               <Item elevation={8}>
-                <DataGrid/>
+                <AttackSummaryTable/>
               </Item>
             </Box>
         </Grid>

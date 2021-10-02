@@ -221,13 +221,13 @@ function SettingsPanel(props) {
           <MenuItem value={1000}>{Number(1000).toLocaleString()}</MenuItem>
         </Select>
       </FormControl>
-      <FormControl variant="standard">
+      {/* <FormControl variant="standard">
         <InputLabel>Theme</InputLabel>
         <Select value={activeTheme} onChange={handleThemeChange}>
           <MenuItem value="default">Default Theme</MenuItem>
           <MenuItem value="ant">Ant Design</MenuItem>
         </Select>
-      </FormControl>
+      </FormControl> */}
       <Button
         size="small"
         variant="outlined"
@@ -247,7 +247,7 @@ SettingsPanel.propTypes = {
   type: PropTypes.oneOf(['Commodity', 'Employee']).isRequired,
 };
 
-export default function FullFeaturedDemo() {
+export default function AttackSummaryTable() {
   const classes = useStyles();
   const antDesignClasses = useStylesAntDesign();
   const [isAntDesign, setIsAntDesign] = React.useState(false);
