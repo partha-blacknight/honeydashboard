@@ -1,331 +1,378 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
-import { useDemoData } from '@mui/x-data-grid-generator';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { makeStyles } from '@mui/styles';
-import { createTheme } from '@mui/material/styles';
-import FormControl from '@mui/material/FormControl';
-import FormGroup from '@mui/material/FormGroup';
-import Button from '@mui/material/Button';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import { alpha } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+import TableSortLabel from '@mui/material/TableSortLabel';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Checkbox from '@mui/material/Checkbox';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import DeleteIcon from '@mui/icons-material/Delete';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import { visuallyHidden } from '@mui/utils';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-//const defaultTheme = createTheme();
 const darkTheme = createTheme({ palette: { mode: 'dark' } });
-const useStylesAntDesign = makeStyles(
-  (theme) => ({
-    root: {
-      border: `1px solid ${theme.palette.mode === 'light' ? '#f0f0f0' : '#303030'}`,
-      color:
-        theme.palette.mode === 'light'
-          ? 'rgba(0,0,0,.85)'
-          : 'rgba(255,255,255,.85)',
-      fontFamily: [
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(','),
-      WebkitFontSmoothing: 'auto',
-      letterSpacing: 'normal',
-      '& .MuiDataGrid-columnsContainer': {
-        backgroundColor: theme.palette.mode === 'light' ? '#fafafa' : '#1d1d1d',
-      },
-      '& .MuiDataGrid-iconSeparator': {
-        display: 'none',
-      },
-      '& .MuiDataGrid-columnHeader, .MuiDataGrid-cell': {
-        borderRight: `1px solid ${
-          theme.palette.mode === 'light' ? '#f0f0f0' : '#303030'
-        }`,
-      },
-      '& .MuiDataGrid-columnsContainer, .MuiDataGrid-cell': {
-        borderBottom: `1px solid ${
-          theme.palette.mode === 'light' ? '#f0f0f0' : '#303030'
-        }`,
-      },
-      '& .MuiDataGrid-cell': {
-        color:
-          theme.palette.mode === 'light'
-            ? 'rgba(0,0,0,.85)'
-            : 'rgba(255,255,255,0.85)',
-        fontFamily: [
-          '-apple-system',
-          'BlinkMacSystemFont',
-          '"Segoe UI"',
-          'Roboto',
-          '"Helvetica Neue"',
-          'Arial',
-          'sans-serif',
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
-        ].join(','),
-        WebkitFontSmoothing: 'auto',
-        letterSpacing: 'normal',
-        '& .MuiDataGrid-columnsContainer': {
-          backgroundColor: theme.palette.mode === 'light' ? '#fafafa' : '#1d1d1d',
-        },
-        '& .MuiDataGrid-iconSeparator': {
-          display: 'none',
-        },
-        '& .MuiDataGrid-colCell, .MuiDataGrid-cell': {
-          borderRight: `1px solid ${
-            theme.palette.mode === 'light' ? '#f0f0f0' : '#303030'
-          }`,
-        },
-        '& .MuiDataGrid-columnsContainer, .MuiDataGrid-cell': {
-          borderBottom: `1px solid ${
-            theme.palette.mode === 'light' ? '#f0f0f0' : '#303030'
-          }`,
-        },
-        '& .MuiDataGrid-cell': {
-          color:
-            theme.palette.mode === 'light'
-              ? 'rgba(0,0,0,.85)'
-              : 'rgba(255,255,255,0.65)',
-        },
-        '& .MuiPaginationItem-root': {
-          borderRadius: 0,
-        },
-        '& .MuiCheckbox-root svg': {
-          width: 16,
-          height: 16,
-          backgroundColor: 'transparent',
-          border: `1px solid ${
-            theme.palette.mode === 'light' ? '#d9d9d9' : 'rgb(67, 67, 67)'
-          }`,
-          borderRadius: 2,
-        },
-        '& .MuiCheckbox-root svg path': {
-          display: 'none',
-        },
-        '& .MuiCheckbox-root.Mui-checked:not(.MuiCheckbox-indeterminate) svg': {
-          backgroundColor: '#1890ff',
-          borderColor: '#1890ff',
-        },
-        '& .MuiCheckbox-root.Mui-checked .MuiIconButton-label:after': {
-          position: 'absolute',
-          display: 'table',
-          border: '2px solid #fff',
-          borderTop: 0,
-          borderLeft: 0,
-          transform: 'rotate(45deg) translate(-50%,-50%)',
-          opacity: 1,
-          transition: 'all .2s cubic-bezier(.12,.4,.29,1.46) .1s',
-          content: '""',
-          top: '50%',
-          left: '39%',
-          width: 5.71428571,
-          height: 9.14285714,
-        },
-        '& .MuiCheckbox-root.MuiCheckbox-indeterminate .MuiIconButton-label:after': {
-          width: 8,
-          height: 8,
-          backgroundColor: '#1890ff',
-          transform: 'none',
-          top: '39%',
-          border: 0,
-        },
-      },
-    },
-  }),
-  { darkTheme },
-);
 
-const useStyles = makeStyles(
-  (theme) => ({
-    root: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: 600,
-      width: '100%',
-      '& .MuiFormGroup-options': {
-        alignItems: 'center',
-        paddingBottom: theme.spacing(1),
-        '& > div': {
-          minWidth: 100,
-          margin: theme.spacing(2, 2, 2, 0),
-        },
-      },
-    },
-  }),
-  { darkTheme },
-);
+function createData(timestamps, ip, protocol, country, logs) {
+  return {
+    timestamps,
+    ip,
+    protocol,
+    country,
+    logs,
+  };
+}
 
-function SettingsPanel(props) {
-  const { onApply, type, size, theme } = props;
-  const [sizeState, setSize] = React.useState(size);
-  const [typeState, setType] = React.useState(type);
-  const [selectedPaginationValue, setSelectedPaginationValue] = React.useState(-1);
-  const [activeTheme, setActiveTheme] = React.useState(theme);
+const rows = [
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+  createData("Thu Sep 30 2021 11:32:53", "192.168.12.14", "HTTP", "USA", "IOWEFOEWHHRWEHRWPE ORHWEH RQWHRHWEHRW"),
+];
 
-  const handleSizeChange = React.useCallback((event) => {
-    setSize(Number(event.target.value));
-  }, []);
+function descendingComparator(a, b, orderBy) {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+}
 
-  const handleDatasetChange = React.useCallback((event) => {
-    setType(event.target.value);
-  }, []);
+function getComparator(order, orderBy) {
+  return order === 'desc'
+    ? (a, b) => descendingComparator(a, b, orderBy)
+    : (a, b) => -descendingComparator(a, b, orderBy);
+}
 
-  const handlePaginationChange = React.useCallback((event) => {
-    setSelectedPaginationValue(event.target.value);
-  }, []);
+// This method is created for cross-browser compatibility, if you don't
+// need to support IE11, you can use Array.prototype.sort() directly
+function stableSort(array, comparator) {
+  const stabilizedThis = array.map((el, index) => [el, index]);
+  stabilizedThis.sort((a, b) => {
+    const order = comparator(a[0], b[0]);
+    if (order !== 0) {
+      return order;
+    }
+    return a[1] - b[1];
+  });
+  return stabilizedThis.map((el) => el[0]);
+}
 
-  const handleThemeChange = React.useCallback((event) => {
-    setActiveTheme(event.target.value);
-  }, []);
+const headCells = [
+  {
+    id: 'timestamps',
+    numeric: false,
+    disablePadding: false,
+    label: 'Timestamps',
+  },
+  {
+    id: 'ip',
+    numeric: false,
+    disablePadding: false,
+    label: 'IP',
+  },
+  {
+    id: 'protocol',
+    numeric: false,
+    disablePadding: false,
+    label: 'Protocol',
+  },
+  {
+    id: 'country',
+    numeric: false,
+    disablePadding: false,
+    label: 'Country',
+  },
+  {
+    id: 'logs',
+    numeric: false,
+    disablePadding: false,
+    label: 'Logs',
+  },
+];
 
-  const handleApplyChanges = React.useCallback(() => {
-    onApply({
-      size: sizeState,
-      type: typeState,
-      pagesize: selectedPaginationValue,
-      theme: activeTheme,
-    });
-  }, [sizeState, typeState, selectedPaginationValue, activeTheme, onApply]);
+function AttackSummaryTableHead(props) {
+  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
+    props;
+  const createSortHandler = (property) => (event) => {
+    onRequestSort(event, property);
+  };
 
   return (
-    <FormGroup className="MuiFormGroup-options" row>
-      <FormControl variant="standard">
-        <InputLabel>Dataset</InputLabel>
-        <Select value={typeState} onChange={handleDatasetChange}>
-          <MenuItem value="Employee">Employee</MenuItem>
-          <MenuItem value="Commodity">Commodity</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl variant="standard">
-        <InputLabel>Rows</InputLabel>
-        <Select value={sizeState} onChange={handleSizeChange}>
-          <MenuItem value={100}>100</MenuItem>
-          <MenuItem value={1000}>{Number(1000).toLocaleString()}</MenuItem>
-          <MenuItem value={10000}>{Number(10000).toLocaleString()}</MenuItem>
-          <MenuItem value={100000}>{Number(100000).toLocaleString()}</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl variant="standard">
-        <InputLabel>Page Size</InputLabel>
-        <Select value={selectedPaginationValue} onChange={handlePaginationChange}>
-          <MenuItem value={-1}>off</MenuItem>
-          <MenuItem value={0}>auto</MenuItem>
-          <MenuItem value={25}>25</MenuItem>
-          <MenuItem value={100}>100</MenuItem>
-          <MenuItem value={1000}>{Number(1000).toLocaleString()}</MenuItem>
-        </Select>
-      </FormControl>
-      {/* <FormControl variant="standard">
-        <InputLabel>Theme</InputLabel>
-        <Select value={activeTheme} onChange={handleThemeChange}>
-          <MenuItem value="default">Default Theme</MenuItem>
-          <MenuItem value="ant">Ant Design</MenuItem>
-        </Select>
-      </FormControl> */}
-      <Button
-        size="small"
-        variant="outlined"
-        color="primary"
-        onClick={handleApplyChanges}
-      >
-        <KeyboardArrowRightIcon fontSize="small" /> Apply
-      </Button>
-    </FormGroup>
+    <TableHead>
+      <TableRow>
+        <TableCell padding="checkbox">
+          <Checkbox
+            color="primary"
+            indeterminate={numSelected > 0 && numSelected < rowCount}
+            checked={rowCount > 0 && numSelected === rowCount}
+            onChange={onSelectAllClick}
+            inputProps={{
+              'aria-label': 'select all desserts',
+            }}
+          />
+        </TableCell>
+        {headCells.map((headCell) => (
+          <TableCell
+            key={headCell.id}
+            align={headCell.numeric ? 'right' : 'left'}
+            padding={headCell.disablePadding ? 'none' : 'normal'}
+            sortDirection={orderBy === headCell.id ? order : false}
+          >
+            <TableSortLabel
+              active={orderBy === headCell.id}
+              direction={orderBy === headCell.id ? order : 'asc'}
+              onClick={createSortHandler(headCell.id)}
+            >
+              {headCell.label}
+              {orderBy === headCell.id ? (
+                <Box component="span" sx={visuallyHidden}>
+                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                </Box>
+              ) : null}
+            </TableSortLabel>
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
   );
 }
 
-SettingsPanel.propTypes = {
-  onApply: PropTypes.func.isRequired,
-  size: PropTypes.number.isRequired,
-  theme: PropTypes.oneOf(['ant', 'default']).isRequired,
-  type: PropTypes.oneOf(['Commodity', 'Employee']).isRequired,
+AttackSummaryTableHead.propTypes = {
+  numSelected: PropTypes.number.isRequired,
+  onRequestSort: PropTypes.func.isRequired,
+  onSelectAllClick: PropTypes.func.isRequired,
+  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
+  orderBy: PropTypes.string.isRequired,
+  rowCount: PropTypes.number.isRequired,
+};
+
+const AttackSummaryTableToolbar = (props) => {
+  const { numSelected } = props;
+
+  return (
+    <Toolbar
+      sx={{
+        pl: { sm: 2 },
+        pr: { xs: 1, sm: 1 },
+        ...(numSelected > 0 && {
+          bgcolor: (theme) =>
+            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
+        }),
+      }}
+    >
+      {numSelected > 0 ? (
+        <Typography
+          sx={{ flex: '1 1 100%' }}
+          color="inherit"
+          variant="subtitle1"
+          component="div"
+        >
+          {numSelected} selected
+        </Typography>
+      ) : (
+        <Typography
+          sx={{ flex: '1 1 100%' }}
+          variant="h6"
+          id="tableTitle"
+          component="div"
+        >
+          Attacks Summary
+        </Typography>
+      )}
+
+      {numSelected > 0 ? (
+        <Tooltip title="Delete">
+          <IconButton>
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
+      ) : (
+        <Tooltip title="Filter list">
+          <IconButton>
+            <FilterListIcon />
+          </IconButton>
+        </Tooltip>
+      )}
+    </Toolbar>
+  );
+};
+
+AttackSummaryTableToolbar.propTypes = {
+  numSelected: PropTypes.number.isRequired,
 };
 
 export default function AttackSummaryTable() {
-  const classes = useStyles();
-  const antDesignClasses = useStylesAntDesign();
-  const [isAntDesign, setIsAntDesign] = React.useState(false);
-  const [type, setType] = React.useState('Commodity');
-  const [size, setSize] = React.useState(100);
-  const { loading, data, setRowLength, loadNewData } = useDemoData({
-    dataSet: type,
-    rowLength: size,
-    maxColumns: 40,
-    editable: true,
-  });
+  const [order, setOrder] = React.useState('asc');
+  const [orderBy, setOrderBy] = React.useState('calories');
+  const [selected, setSelected] = React.useState([]);
+  const [page, setPage] = React.useState(0);
+  const [dense, setDense] = React.useState(false);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const [pagination, setPagination] = React.useState({
-    pagination: false,
-    autoPageSize: false,
-    pageSize: undefined,
-  });
-
-  const getActiveTheme = () => {
-    return isAntDesign ? 'ant' : 'default';
+  const handleRequestSort = (event, property) => {
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
   };
 
-  const handleApplyClick = (settings) => {
-    if (size !== settings.size) {
-      setSize(settings.size);
+  const handleSelectAllClick = (event) => {
+    if (event.target.checked) {
+      const newSelecteds = rows.map((n) => n.name);
+      setSelected(newSelecteds);
+      return;
     }
-
-    if (type !== settings.type) {
-      setType(settings.type);
-    }
-
-    if (getActiveTheme() !== settings.theme) {
-      setIsAntDesign(!isAntDesign);
-    }
-
-    if (size !== settings.size || type !== settings.type) {
-      setRowLength(settings.size);
-      loadNewData();
-    }
-
-    const newPaginationSettings = {
-      pagination: settings.pagesize !== -1,
-      autoPageSize: settings.pagesize === 0,
-      pageSize: settings.pagesize > 0 ? settings.pagesize : undefined,
-    };
-
-    setPagination((currentPaginationSettings) => {
-      if (
-        currentPaginationSettings.pagination === newPaginationSettings.pagination &&
-        currentPaginationSettings.autoPageSize ===
-          newPaginationSettings.autoPageSize &&
-        currentPaginationSettings.pageSize === newPaginationSettings.pageSize
-      ) {
-        return currentPaginationSettings;
-      }
-      return newPaginationSettings;
-    });
+    setSelected([]);
   };
+
+  const handleClick = (event, name) => {
+    const selectedIndex = selected.indexOf(name);
+    let newSelected = [];
+
+    if (selectedIndex === -1) {
+      newSelected = newSelected.concat(selected, name);
+    } else if (selectedIndex === 0) {
+      newSelected = newSelected.concat(selected.slice(1));
+    } else if (selectedIndex === selected.length - 1) {
+      newSelected = newSelected.concat(selected.slice(0, -1));
+    } else if (selectedIndex > 0) {
+      newSelected = newSelected.concat(
+        selected.slice(0, selectedIndex),
+        selected.slice(selectedIndex + 1),
+      );
+    }
+
+    setSelected(newSelected);
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const handleChangeDense = (event) => {
+    setDense(event.target.checked);
+  };
+
+  const isSelected = (name) => selected.indexOf(name) !== -1;
+
+  // Avoid a layout jump when reaching the last page with empty rows.
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <div className={classes.root}>
-      <SettingsPanel
-        onApply={handleApplyClick}
-        size={size}
-        type={type}
-        theme={getActiveTheme()}
-      />
-      <DataGrid
-        className={isAntDesign ? antDesignClasses.root : undefined}
-        {...data}
-        components={{
-          Toolbar: GridToolbar,
-        }}
-        loading={loading}
-        checkboxSelection
-        disableSelectionOnClick
-        {...pagination}
-      />
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <Box sx={{ width: '100%' }}>
+        <Paper sx={{ width: '100%', overflow: 'hidden', mb: 2, backgroundColor: '#020000' }} elevation={8}>
+          <AttackSummaryTableToolbar numSelected={selected.length} />
+          <TableContainer sx={{ maxHeight: 480 }}>
+            <Table
+              sx={{ minWidth: 750 }}
+              stickyHeader
+              aria-labelledby="tableTitle"
+              size={dense ? 'small' : 'medium'}
+            >
+              <AttackSummaryTableHead
+                numSelected={selected.length}
+                order={order}
+                orderBy={orderBy}
+                onSelectAllClick={handleSelectAllClick}
+                onRequestSort={handleRequestSort}
+                rowCount={rows.length}
+              />
+              <TableBody>
+                {/* if you don't need to support IE11, you can replace the `stableSort` call with:
+                   rows.slice().sort(getComparator(order, orderBy)) */}
+                {stableSort(rows, getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    const isItemSelected = isSelected(row.name);
+                    const labelId = `enhanced-table-checkbox-${index}`;
+
+                    return (
+                      <TableRow
+                        hover
+                        onClick={(event) => handleClick(event, row.timestamps)}
+                        role="checkbox"
+                        aria-checked={isItemSelected}
+                        tabIndex={-1}
+                        key={row.timestamps}
+                        selected={isItemSelected}
+                      >
+                        <TableCell padding="checkbox">
+                          <Checkbox
+                            color="primary"
+                            checked={isItemSelected}
+                            inputProps={{
+                              'aria-labelledby': labelId,
+                            }}
+                          />
+                        </TableCell>
+                        <TableCell
+                          component="th"
+                          id={labelId}
+                          scope="row"
+                          padding="none"
+                        >
+                           {row.timestamps}
+                        </TableCell>
+                        <TableCell align="right">{row.ip}</TableCell>
+                        <TableCell align="right">{row.protocol}</TableCell>
+                        <TableCell align="right">{row.country}</TableCell>
+                        <TableCell align="right">{row.logs}</TableCell>
+                      </TableRow>
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow
+                    style={{
+                      height: (dense ? 33 : 53) * emptyRows,
+                    }}
+                  >
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Paper>
+      </Box>
+    </ThemeProvider>
   );
 }

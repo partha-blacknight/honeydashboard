@@ -6,7 +6,7 @@ const data = {
     'Slovakia'],
   datasets: [
     {
-      label: '# Live Attack By Country',
+      label: '# Live Attack Summary',
       data: [
         Math.floor(Math.random() * 10000) + 1, 
         Math.floor(Math.random() * 10000) + 1,
@@ -66,6 +66,14 @@ const options = {
         },
       },
     ],
+  },
+  animations: {
+    tension: {
+      duration: 1000,
+      easing: 'easeInOutElastic',
+      from: 1,
+      to: 0
+    }
   },
 };
 

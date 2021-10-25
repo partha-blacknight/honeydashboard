@@ -5,11 +5,11 @@ import TopSectionGrid from '../../components/Dashboard/TopSectionGrid';
 import LiveAttacks from '../../components/Dashboard/LiveAttacks';
 import AttackByCountry from '../../components/Dashboard/AttackByCountry';
 import AttackByIP from '../../components/Dashboard/AttackByIP';
-import ProtocolAttacks from '../../components/Dashboard/ProtocolAttack';
+import AttacksSummary from '../../components/Dashboard/AttackSummary';
 import RealtimeLogsTable from '../../components/Dashboard/RealtimeLogsTable';
 import './css/dashboard.css';
 
-const IndexPage = () => {
+const Dashboard = () => {
   return (
     <Layout>
       <SimpleContainer>
@@ -18,10 +18,10 @@ const IndexPage = () => {
         <RealtimeLogsTable/>
         <AttackByCountry/>
         <AttackByIP/>
-        <ProtocolAttacks/>
+        <AttacksSummary/>
       </SimpleContainer>
     </Layout>
   )
 }
 
-export default IndexPage;
+export default Dashboard;

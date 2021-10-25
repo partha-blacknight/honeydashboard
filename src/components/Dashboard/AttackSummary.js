@@ -8,19 +8,17 @@ import AttackSummaryTable from './Tables/AttackSummaryTable';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
-  padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  height: '720px',
   backgroundColor: '#0303033b',
   color: '#FFFFFF'
 }));
 
 const darkTheme = createTheme({ palette: { mode: 'dark' } });
 
-export default function ProtocolAttacks() {
+export default function AttacksSummary() {
   return (
-    <Box sx={{ flexGrow: 1, marginTop: 8 }}>
+    <Box sx={{ flexGrow: 1, marginTop: 2, marginBottom: 10 }}>
       <Grid container spacing={2}>
         <Grid item md={12} xs={12}>
             <Box>
@@ -30,7 +28,7 @@ export default function ProtocolAttacks() {
             </Box>
         </Grid>
         <Grid item md={12} xs={12}>
-            <Box sx={{marginTop: 8}}>
+            <Box>
               <Item elevation={8}>
                 <AttackSummaryTable/>
               </Item>

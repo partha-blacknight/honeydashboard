@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 const SimpleContainer = ({ children }) => {
   return (
     <React.Fragment>
-    <CssBaseline />
+      <CssBaseline />
       <Container maxWidth="xl">
         {children}
       </Container>

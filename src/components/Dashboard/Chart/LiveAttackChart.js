@@ -67,6 +67,14 @@ const options = {
       },
     ],
   },
+  animations: {
+    tension: {
+      duration: 1000,
+      easing: 'easeInCubic',
+      from: 1,
+      to: 0
+    }
+  },
 };
 
 const LiveAttackChart = () => (

@@ -19,7 +19,7 @@ const darkTheme = createTheme({ palette: { mode: 'dark' } });
 
 const TopSectionGrid = () => {
   return (
-    <Box sx={{ flexGrow: 1, marginTop: 8 }}>
+    <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item md={4} xs={12}>
           <ThemeProvider theme={darkTheme}>

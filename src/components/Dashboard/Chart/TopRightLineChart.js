@@ -2,7 +2,7 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 
 const data = {
-  labels: ['1', '2', '3', '4', '5', '6'],
+  labels: ['HTTP', 'FTP', 'SSH', 'MODBUS', 'SNMP', 'TELNET'],
   datasets: [
     {
       label: '# HTTP',
@@ -116,6 +116,14 @@ const options = {
         },
       },
     ],
+  },
+  animations: {
+    tension: {
+      duration: 1000,
+      easing: 'linear',
+      from: 1,
+      to: 0
+    }
   },
 };
 

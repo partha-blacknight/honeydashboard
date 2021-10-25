@@ -200,7 +200,7 @@ const RealtimeLogsToolbar = (props) => {
           id="tableTitle"
           component="div"
         >
-          Realtime Logs
+          Top 20 Realtime Attacks By Protocol
         </Typography>
       )}
 

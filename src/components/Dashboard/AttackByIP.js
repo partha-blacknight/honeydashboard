@@ -19,7 +19,7 @@ const darkTheme = createTheme({ palette: { mode: 'dark' } });
 
 const AttackByIP = () => {
   return (
-    <Box sx={{ flexGrow: 1, marginTop: 12 }}>
+    <Box sx={{ flexGrow: 1, marginTop: 2 }}>
       <Grid container spacing={2}>
         <Grid item md={4} xs={12}>
             <Box>

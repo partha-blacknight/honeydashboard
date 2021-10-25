@@ -225,7 +225,7 @@ AttackIPTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-export default function AttackCountryTable() {
+export default function AttackIPTable() {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
